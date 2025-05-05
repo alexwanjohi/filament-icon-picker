@@ -232,7 +232,9 @@ class IconPicker extends Select
      */
     public function allowHtml(bool|Closure $condition = true): static
     {
-        $this->markAsNotAllowed();
+        // $this->markAsNotAllowed();
+
+        return $this;
     }
 
     /**
@@ -241,7 +243,9 @@ class IconPicker extends Select
      */
     public function searchable(bool|array|Closure $condition = true): static
     {
-        $this->markAsNotAllowed();
+        // $this->markAsNotAllowed();
+
+        return $this;
     }
 
     /**
@@ -334,7 +338,7 @@ class IconPicker extends Select
         $allowedHash = md5(serialize($allowedIcons));
         $disallowedHash = md5(serialize($disallowedIcons));
         $iconsKey = "icon-picker.fields.icons.{$iconsHash}.{$allowedSetsHash}.{$allowedHash}.{$disallowedHash}.{$this->getStatePath()}";
-        
+
         $icons = $this->tryCache($iconsKey, function() use($sets, $allowedIcons, $disallowedIcons) {
             $icons = [];
 
